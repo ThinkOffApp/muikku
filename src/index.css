@@ -1,0 +1,11 @@
+/* Cleared for Spatiotemporal Visualizer */
+:root {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #000;
+  color: white;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
