@@ -1,73 +1,48 @@
-# React + TypeScript + Vite
+# Muikku (`muikku.app`)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Real-time 3D spatiotemporal audio visualizer in the browser.**
 
-Currently, two official plugins are available:
+Built with React 19, TypeScript, Vite, and Three.js (`@react-three/fiber` + `@react-three/drei`), Muikku renders live audio-reactive 3D **Shape Cloud** and **Point Cloud** scenes with ThinkOff color palettes, orbit controls, fullscreen display, and an optional `?voicechat` mode. It can also be embedded directly inside [`acid-control`](https://github.com/ThinkOffApp/acid-control) for live music sessions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- **Two 3D visualization modes:** smooth camera transitions between `ShapeCloud` and `PointCloud` starfields.
+- **Audio-reactive engine:** captures live microphone/audio input via Web Audio (`src/audio/AudioManager.ts`).
+- **ThinkOff theme palettes:** cycle through curated color schemes (`src/constants/Colors.ts`) and fullscreen presentation mode.
+- **Voice chat view:** append `?voicechat` (or `#voicechat`) to launch the interactive `VoiceChatDemo` overlay (`src/voice/`).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Quick Start
 
-## Expanding the ESLint configuration
+Requires Node.js 20+.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/ThinkOffApp/muikku.git
+cd muikku
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Build & Lint
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
+npm run preview
+npm run lint
 ```
+
+## Tech Stack
+
+| Layer | Libraries |
+|---|---|
+| UI & Build | React 19, TypeScript, Vite |
+| 3D Rendering | Three.js, `@react-three/fiber`, `@react-three/drei` |
+| Vision / Tracking | `@mediapipe/tasks-vision` |
+| Icons | `lucide-react` |
+
+## License
+
+GNU Affero General Public License v3.0 (`AGPL-3.0`). See [LICENSE](LICENSE).
+
+---
+
+Part of the [ThinkOff](https://thinkoff.io) family · Pairs with [`acid-control`](https://github.com/ThinkOffApp/acid-control) · Live at [muikku.app](https://muikku.app)
